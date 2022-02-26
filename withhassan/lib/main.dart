@@ -14,14 +14,14 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
-  int _questionIndex = 0;
+  int _questionIndex = 0; // رقم السؤال
 
   void answerquestion() {
     if (_questionIndex == 1) {
       _questionIndex = -1;
     }
 
-    setState(() {
+    (() {
       _questionIndex += 1;
     });
     print(_questionIndex);
@@ -54,10 +54,10 @@ class _MyappState extends State<Myapp> {
           child: Column(
             children: [
               question(_question[_questionIndex]['a']
-                  .toString()), //كود لجلب الاجابات من الماب
+                  .toString()), //كود لجلب الاجوبة من الماب
               ...(_question[_questionIndex]['b'] as List<String>)
                   .map((answerx) {
-                return answer(answerquestion, answerx);
+                return answer(answerquestion, answerx);//كود لجلب الاجوبة من الماب
               }).toList(),
             ],
           ),
