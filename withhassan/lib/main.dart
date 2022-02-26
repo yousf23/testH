@@ -28,26 +28,21 @@ class _MyappState extends State<Myapp> {
     print('bonton1111');
   }
 
-  get _question => [
-        {
-          'a': '142',
-          'b': '152',
-        },
-        {
-          'a': '144552',
-          'b': '152',
-        },
-        {
-          'a': '13332',
-          'b': '152',
-        },
-      ];
+  final List<Map<String, Object>> _question = [
+    {
+      'a': '142',
+      'b': ['sdssdd', 'gffg', 'sdsdsd', 'gfggf']
+    },
+    {
+      'a': '14782',
+      'b': ['sdssdd', 'gffg', 'sdsdsd', 'gfggf']
+    },
+    {
+      'a': '111111111142',
+      'b': ['sdssdd', 'gffg', 'sdsdsd', 'gfggf']
+    },
+  ];
 
-  // final _question = [
-  //   {},
-  //   'ما هي الدول الأعلى استهلاكًا للدواجن؟',
-  //   'ما هو أطول نهر في العالم',
-  // ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,7 +53,10 @@ class _MyappState extends State<Myapp> {
         body: Container(
           child: Column(
             children: [
-              question(_question[_questionIndex]['a']),
+              question(_question[_questionIndex]['a'].toString()),
+              ...(_question[_questionIndex]['b'] as List<String>)
+                  .map((b) {})()!
+                  .toList(),
               answer(answerquestion, 'answer1'),
               answer(answerquestion, 'answer2'),
               answer(answerquestion, 'answer3'),
