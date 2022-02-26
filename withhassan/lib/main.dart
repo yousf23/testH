@@ -17,10 +17,6 @@ class _MyappState extends State<Myapp> {
   int _questionIndex = 0;
 
   void answerquestion() {
-    if (_questionIndex == 1) {
-      _questionIndex = -1;
-    }
-
     setState(() {
       _questionIndex += 1;
     });
@@ -51,15 +47,20 @@ class _MyappState extends State<Myapp> {
           title: Text('heyy'),
         ),
         body: Container(
-          child: Column(
-            children: [
-              question(_question[_questionIndex]['a']
-                  .toString()), //كود لجلب الاسلة من الماب
-              ...(_question[_questionIndex]['b'] as List<String>).map((b) {
-                return answer(answerquestion, b); //كود لجلب الاجوبة من الماب
-              }).toList(),
-            ],
-          ),
+          //_questionIndex<_question.length?  // ida kan _questionIndex a9al min  question = Text('done'),
+          child: _questionIndex < _question.length
+              ? Column(
+                  children: [
+                    question(_question[_questionIndex]['a']
+                        .toString()), //كود لجلب الاسلة من الماب
+                    ...(_question[_questionIndex]['b'] as List<String>)
+                        .map((b) {
+                      return answer(
+                          answerquestion, b); //كود لجلب الاجوبة من الماب
+                    }).toList(),
+                  ],
+                )
+              : Center(child: Text('done')), //text رسالة النهاية
         ),
       ),
     );
