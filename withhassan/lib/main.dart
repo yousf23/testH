@@ -53,13 +53,12 @@ class _MyappState extends State<Myapp> {
         body: Container(
           child: Column(
             children: [
-              question(_question[_questionIndex]['a'].toString()),
+              question(_question[_questionIndex]['a']
+                  .toString()), //كود لجلب الاجابات من الماب
               ...(_question[_questionIndex]['b'] as List<String>)
-                  .map((b) {})()!
-                  .toList(),
-              answer(answerquestion, 'answer1'),
-              answer(answerquestion, 'answer2'),
-              answer(answerquestion, 'answer3'),
+                  .map((answerx) {
+                return answer(answerquestion, answerx);
+              }).toList(),
             ],
           ),
         ),
