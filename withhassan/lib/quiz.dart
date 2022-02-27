@@ -6,7 +6,7 @@ import 'question.dart';
 class quiz extends StatelessWidget {
   final List<Map<String, Object>> question;
   final int questionIndex;
-  final Function() answerquestion;
+  final Function(int s) answerquestion;
 
   quiz.all(this.question, this.answerquestion, this.questionIndex);
 
@@ -16,8 +16,8 @@ class quiz extends StatelessWidget {
       children: [
         Question(
             question[questionIndex]['a'].toString()), //كود لجلب الاسلة من الماب
-        ...(question[questionIndex]['b'] as List<String>).map((b) {
-          return answer(answerquestion, b); //كود لجلب الاجوبة من الماب
+        ...(question[questionIndex]['b'] as List<Map<String,Object>>).map((b) {
+          return answer(()=>answerquestion(int.parse(b['score'].toString())), b['text'].toString()); //كود لجلب الاجوبة من الماب
         }).toList(),
       ],
     );

@@ -12,34 +12,53 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
+  int _totalScore = 0;
   int _questionIndex = 0;
 
   void _resetQuiz() {
     setState(() {
       _questionIndex = 0;
+      _totalScore = 0;
     });
   }
 
-  void answerquestion() {
+  void answerquestion(int score ) {
+    _totalScore += score;
     setState(() {
       _questionIndex += 1;
     });
     print(_questionIndex);
     print('bonton1111');
+    print(_totalScore);
   }
 
   final List<Map<String, Object>> _question = [
     {
-      'a': '142',
-      'b': ['sdssdd', 'gffg', 'sdsdsd', 'gfggf']
+      'a': 'what the best color?',
+      'b': [
+        {'text': 'black', 'score': 10},
+        {'text': 'yallow', 'score': 10},
+        {'text': 'green', 'score': 10},
+        {'text': 'orange', 'score': 10},
+      ]
     },
     {
-      'a': '14782',
-      'b': ['hggggh', 'gffg', 'sdsdsd', 'gfggf']
+      'a': 'what the best car?',
+      'b': [
+        {'text': 'bmw', 'score': 10},
+        {'text': 'mazda', 'score': 10},
+        {'text': 'toyota', 'score': 10},
+        {'text': 'dacia', 'score': 10},
+      ]
     },
     {
-      'a': '111111111142',
-      'b': ['hghgfhgf', 'gffg', 'sdsdsd', 'gfggf']
+      'a': 'what the best animal',
+      'b': [
+        {'text': 'rabbit', 'score': 10},
+        {'text': 'tiger', 'score': 10},
+        {'text': 'elephant', 'score': 10},
+        {'text': 'lion', 'score': 10},
+      ]
     },
   ];
 
@@ -55,7 +74,7 @@ class _MyappState extends State<Myapp> {
           child: _questionIndex < _question.length
               ? quiz.all(_question, answerquestion,
                   _questionIndex) //جلب من كلاس اخر باستعمال constructor
-              : result(_resetQuiz), //text رسالة النهاية
+              : result(_resetQuiz,_totalScore), //text رسالة النهاية
         ),
       ),
     );
