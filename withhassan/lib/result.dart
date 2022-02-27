@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
 class result extends StatelessWidget {
-  const result({Key? key}) : super(key: key);
+  //الفكشن لعمل reset
+  final Function() q;
+  result(this.q); //constructor
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Column(
+        children: [
+          Center(child: Text('done')),
+          FlatButton(
+              onPressed: q, child: Text('Try again ')), //ارجاع الاسلة الى الصفر
+        ],
+      ),
+    );
   }
 }

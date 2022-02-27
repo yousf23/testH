@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:withhassan/question.dart';
-
-import 'answer.dart';
-import 'question.dart';
+import 'package:withhassan/quiz.dart';
+import 'package:withhassan/result.dart';
 
 main() => runApp(Myapp());
 
@@ -15,6 +13,12 @@ class Myapp extends StatefulWidget {
 
 class _MyappState extends State<Myapp> {
   int _questionIndex = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+    });
+  }
 
   void answerquestion() {
     setState(() {
@@ -49,18 +53,9 @@ class _MyappState extends State<Myapp> {
         body: Container(
           //_questionIndex<_question.length?  // ida kan _questionIndex a9al min  question = Text('done'),
           child: _questionIndex < _question.length
-              ? Column(
-                  children: [
-                    question(_question[_questionIndex]['a']
-                        .toString()), //كود لجلب الاسلة من الماب
-                    ...(_question[_questionIndex]['b'] as List<String>)
-                        .map((b) {
-                      return answer(
-                          answerquestion, b); //كود لجلب الاجوبة من الماب
-                    }).toList(),
-                  ],
-                )
-              : Center(child: Text('done')), //text رسالة النهاية
+              ? quiz.all(_question, answerquestion,
+                  _questionIndex) //جلب من كلاس اخر باستعمال constructor
+              : result(_resetQuiz), //text رسالة النهاية
         ),
       ),
     );
