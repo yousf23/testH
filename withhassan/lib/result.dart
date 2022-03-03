@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 
 class result extends StatelessWidget {
+  //resulttext
+  String get resulttt {
+    String resulttt;
 
-
-
-  String get restlPha {
-    String resultText;
-
-    return resultText;
+    if (resulScore >= 70) {
+      resulttt = 'good result';
+    } else {
+      resulttt = 'bad result';
+    }
+    return resulttt;
   }
-
-
-
-
-
-
-
 
   //الفكشن لعمل reset
   final Function() q;
