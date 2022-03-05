@@ -22,7 +22,7 @@ class _MyappState extends State<Myapp> {
     });
   }
 
-  void answerquestion(int score ) {
+  void answerquestion(int score) {
     _totalScore += score;
     setState(() {
       _questionIndex += 1;
@@ -34,7 +34,7 @@ class _MyappState extends State<Myapp> {
 
   final List<Map<String, Object>> _question = [
     {
-      'a': 'what the best color?',
+      'a': 'what your favorite color?',
       'b': [
         {'text': 'black', 'score': 10},
         {'text': 'yallow', 'score': 10},
@@ -43,7 +43,7 @@ class _MyappState extends State<Myapp> {
       ]
     },
     {
-      'a': 'what the best car?',
+      'a': 'what your favorite car?',
       'b': [
         {'text': 'bmw', 'score': 10},
         {'text': 'mazda', 'score': 10},
@@ -52,7 +52,7 @@ class _MyappState extends State<Myapp> {
       ]
     },
     {
-      'a': 'what the best animal',
+      'a': 'what your favorite animal',
       'b': [
         {'text': 'rabbit', 'score': 10},
         {'text': 'tiger', 'score': 10},
@@ -74,7 +74,7 @@ class _MyappState extends State<Myapp> {
           child: _questionIndex < _question.length
               ? quiz.all(_question, answerquestion,
                   _questionIndex) //جلب من كلاس اخر باستعمال constructor
-              : result(_resetQuiz,_totalScore), //text رسالة النهاية
+              : result(_resetQuiz, _totalScore), //text رسالة النهاية
         ),
       ),
     );
